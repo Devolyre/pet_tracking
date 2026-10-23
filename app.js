@@ -4,7 +4,7 @@ const esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;'
 let state={elyos:[],asmodian:[],faction:'elyos'}, category='',query='',region='',opened=new Set(),scale=1;
 try{const saved=JSON.parse(localStorage.getItem(KEY));if(saved&&Array.isArray(saved.elyos)&&Array.isArray(saved.asmodian))state={...state,...saved};}catch(e){}
 if(!['elyos','asmodian'].includes(state.faction))state.faction='elyos';
-const categories=['','Короткий круг','Основной маршрут','Через разлом','Острова','Бездна','Сундуки и магазины','Боссы и подземелья','Источник уточняется'];
+const categories=['','Основной маршрут','Через разлом','Острова','Бездна','Сундуки и магазины','Боссы и подземелья','Источник уточняется'];
 const done=p=>state[state.faction].includes(p.key);
 const unique=r=>[...new Map(r.pets.map(p=>[p.key,p])).values()];
 function save(){try{localStorage.setItem(KEY,JSON.stringify(state));$('#save-status').textContent=tx("● Прогресс сохранён в этом браузере");}catch(e){$('#save-status').textContent=tx("Не удалось сохранить — скачай файл прогресса");}}
