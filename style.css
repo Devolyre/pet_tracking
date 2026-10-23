@@ -86,3 +86,11 @@ footer .art-credit{margin-top:18px;color:#d9a2ae;font-size:12px;letter-spacing:.
 .hero .total .eyebrow{font-family:Arial,sans-serif;font-size:12px;letter-spacing:.6px}.hero .total h2,.hero .total #percent{font-size:32px}
 @media(max-width:650px){.hero{min-height:520px;justify-content:flex-end;padding:36px 6%;gap:20px;background-position:62% center}.hero:before{background:linear-gradient(0deg,#080808c9,transparent 85%)}.hero .hero-copy,.hero .collection-crest{width:90%;max-width:400px}.hero h1{font-size:34px}.hero-copy>p{font-size:12px}.hero .collection-crest .total{padding:18px}.hero .total h2,.hero .total #percent{font-size:27px}}
 @media(orientation:landscape) and (max-height:500px){header{height:56px;min-height:56px}.brandmark{width:40px;height:40px}.hero{min-height:300px;padding:28px 6%;gap:16px;background-position:center 54%}.hero .hero-copy,.hero .collection-crest{width:43%;max-width:400px}.hero h1{font-size:30px;margin:7px 0}.hero-copy>p{font-size:11px}.hero .collection-crest .total{padding:14px 18px}.hero .total h2,.hero .total #percent{font-size:25px}.hero .progress-meta{margin-bottom:12px}.atlas-actions{padding-top:12px}}
+
+/* Portrait phones: equal side gutters and a centered heading above the meter. */
+@media(max-width:650px) and (orientation:portrait){
+ .hero{align-items:center;padding-left:6%;padding-right:6%;text-align:center}
+ .hero .hero-copy,.hero .collection-crest{width:100%;max-width:400px;margin-left:auto;margin-right:auto}
+ .hero .hero-copy{text-align:center}
+ .hero .collection-crest .total{text-align:left}
+}
