@@ -4,7 +4,7 @@ const esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;'
 let state={elyos:[],asmodian:[],faction:'elyos'}, category='',query='',region='',opened=new Set(),scale=1;
 try{const saved=JSON.parse(localStorage.getItem(KEY));if(saved&&Array.isArray(saved.elyos)&&Array.isArray(saved.asmodian))state={...state,...saved};}catch(e){}
 if(!['elyos','asmodian'].includes(state.faction))state.faction='elyos';
-const categories=['','Основной маршрут','Через разлом','Острова','Бездна','Сундуки и магазины','Боссы и подземелья','Источник уточняется'];
+const categories=['','Основной маршрут','Через разлом','Острова','Бездна','Сундуки и магазины','Боссы и подземелья'];
 const done=p=>state[state.faction].includes(p.key);
 const unique=r=>[...new Map(r.pets.map(p=>[p.key,p])).values()];
 function save(){try{localStorage.setItem(KEY,JSON.stringify(state));$('#save-status').textContent=tx("● Прогресс сохранён в этом браузере");}catch(e){$('#save-status').textContent=tx("Не удалось сохранить — скачай файл прогресса");}}
@@ -13,7 +13,7 @@ function render(){
  const all=ROUTES.filter(r=>r.faction===state.faction),pets=[...new Map(all.flatMap(r=>r.pets).map(p=>[p.key,p])).values()],n=pets.filter(done).length,percent=Math.round(n/pets.length*100);
  $('#total').textContent=`${n} / ${pets.length}`;$('#percent').innerHTML=`${percent}<span>%</span>`;$('#ring').style.setProperty('--p',percent+'%');$('#ring').setAttribute('aria-valuenow',n);$('#ring').setAttribute('aria-valuemax',pets.length);$('#ring').setAttribute('aria-label',tx('Собрано питомцев'));
  document.querySelectorAll('[data-faction]').forEach(b=>{b.classList.toggle('active',b.dataset.faction===state.faction);b.setAttribute('aria-pressed',b.dataset.faction===state.faction);});
- $('#categories').innerHTML=categories.map(c=>`<button data-category="${c}" class="${category===c?'active':''}" aria-pressed="${category===c}">${tx(c||'Все разделы')}<span>${['Сундуки и магазины','Боссы и подземелья','Источник уточняется'].includes(c)?new Set(all.filter(r=>r.kind===c).flatMap(r=>r.pets.map(p=>p.key))).size:all.filter(r=>!c||r.kind===c).length}</span></button>`).join('');
+ $('#categories').innerHTML=categories.map(c=>`<button data-category="${c}" class="${category===c?'active':''}" aria-pressed="${category===c}">${tx(c||'Все разделы')}<span>${['Сундуки и магазины','Боссы и подземелья'].includes(c)?new Set(all.filter(r=>r.kind===c).flatMap(r=>r.pets.map(p=>p.key))).size:all.filter(r=>!c||r.kind===c).length}</span></button>`).join('');
  const results=all.filter(r=>(!category||r.kind===category)&&(!region||r.region===region)&&(!$('#unfinished').checked||unique(r).some(p=>!done(p)))&&(!query||[r.title,routeTitle(r),r.region,tx(r.region),r.kind,tx(r.kind),...r.pets.flatMap(p=>[p.name,NAMES_RU[p.name]||'',gn(p.name,'pet'),p.mob,NAMES_RU[p.mob]||'',gn(p.mob),p.note||''])].join(' ').toLowerCase().includes(query)));
  $('#section-title').textContent=tx(category||'Все разделы');$('#result-count').textContent=`${results.filter(r=>!r.extra).length} ${lang==='ru'?'маршрутов':'routes'} · ${results.filter(r=>r.extra).length} ${lang==='ru'?'списков':'lists'} · ${tx(state.faction==='elyos'?'Элийцы':'Асмодиане')}`;
  $('#routes').innerHTML=results.length?results.map(r=>{
@@ -27,7 +27,7 @@ document.addEventListener('click',e=>{
  const b=e.target.closest('button');if(!b)return;
  if(b.dataset.language){lang=b.dataset.language==='en'?'en':'ru';try{localStorage.setItem('kazeros-language',lang);}catch(e){}applyLanguage();render();document.dispatchEvent(new Event('languagechange'));return;}
  if(b.dataset.faction){state.faction=b.dataset.faction;save();render();}
- if(b.hasAttribute('data-category')){category=b.dataset.category;if(['Сундуки и магазины','Боссы и подземелья','Источник уточняется'].includes(category)){region='';$('#region').value='';}render();}
+ if(b.hasAttribute('data-category')){category=b.dataset.category;if(['Сундуки и магазины','Боссы и подземелья'].includes(category)){region='';$('#region').value='';}render();}
  if(b.dataset.bulk){const r=ROUTES.find(r=>r.id===b.dataset.bulk),keys=new Set(unique(r).map(p=>p.key)),clear=b.dataset.action==='clear';window.captureUndo?.([...keys]);state[state.faction]=clear?state[state.faction].filter(k=>!keys.has(k)):[...new Set([...state[state.faction],...keys])];opened.add(r.id);window.rememberRoute?.(r.id);save();render();toast(tx(clear?'Отметки сняты':'Все питомцы списка отмечены'));}
 
  if(b.dataset.map){const r=ROUTES.find(r=>r.id===b.dataset.map);$('#large-map').src=r.map;$('#large-map').alt=tx('Карта маршрута')+': '+routeTitle(r);$('#map-title').textContent=routeTitle(r);scale=1;$('#large-map').style.width='100%';$('#map-dialog').showModal();}
