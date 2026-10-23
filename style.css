@@ -94,3 +94,75 @@ footer .art-credit{margin-top:18px;color:#d9a2ae;font-size:12px;letter-spacing:.
  .hero .hero-copy{text-align:center}
  .hero .collection-crest .total{text-align:left}
 }
+
+/* Readable atlas typography: Latin and Cyrillic. */
+:root{--font-ui:"Golos Text",system-ui,-apple-system,"Segoe UI",sans-serif;--font-title:"Literata",Georgia,serif}
+body{font-family:var(--font-ui);font-size:17px;line-height:1.6}
+button,input,select{font-family:var(--font-ui)}
+.brand,.brand small,#brand-title,.hero-copy>p,.hero .total .eyebrow,.total h2,.total #percent{font-family:var(--font-ui)}
+h1,h2,h3,.feature-heading h2,.section-head h2{font-family:var(--font-title)}
+#brand-title{font-size:17px;line-height:1.4;max-width:none}
+header{height:auto;min-height:86px;flex-wrap:wrap;padding-top:12px;padding-bottom:12px}
+.header-tools{flex-wrap:wrap}
+.header-tools button,.header-tools .language-switch button{font-size:15px;min-height:42px}
+.hero h1{font-size:clamp(38px,4.5vw,64px);font-weight:600;line-height:1.18;letter-spacing:-.6px}
+.hero-copy>p{font-size:18px;line-height:1.6}
+.hero .total .eyebrow{font-size:15px}
+.hero .total h2,.hero .total #percent{font-size:36px;font-weight:600;font-variant-numeric:tabular-nums}
+.total #percent span{font-size:18px}
+.eyebrow,.hero-copy>.eyebrow{font-size:12px}
+.section-head h2,.feature-heading h2{font-size:30px;line-height:1.3;font-weight:600}
+.route-title h3,.extra-intro h3{font-size:20px;line-height:1.4;font-weight:600}
+.pet strong,.pet-map-name,.catalog-check strong{font-size:17px;line-height:1.5;font-weight:600}
+.route-title p,.route-progress,.section-head p,.pet small,.pet .no-spawn,
+.map-note,.source-link,.map-preview span,.extra-intro p,.muted,
+.catalog-links details,.farm-pet small,.spawn-help,.spawn-legend,#spawn-source,
+#spawn-subtitle,#farm-count,.aside-note p,.saved,footer,footer .art-credit{font-size:14px;line-height:1.65}
+nav button,.hide,.aside-note b,.check-header,.feature-filters label,.farm-filter,
+.spawn-list button,.world-pet-list button,.farm-pet button,#farm-next,
+.catalog-links button,.catalog-card>button,.spawn-controls,.spawn-controls button,
+.dialog-head strong,dialog>p,#toast,#undo-banner{font-size:15px}
+nav button span,.pet-point,.spawn-list button small,.capsule{font-size:12px}
+.check-header button{font-size:14px;min-height:40px}
+input::placeholder{font-size:16px}
+select,input[type=search]{font-size:16px}
+.search,select{min-height:46px}
+.feature-filters select{height:auto;min-height:46px}
+.view-tabs button{font-size:16px;line-height:1.4;min-height:46px}
+.route-section,.route-body>div,.pet>span:not(.pet-avatar){min-width:0}
+.pet small,.extra-intro p,.muted,.farm-pet small{overflow-wrap:anywhere}
+.check-header,.spawn-legend{flex-wrap:wrap}
+.route-progress{font-variant-numeric:tabular-nums}
+@media(min-width:901px){.workspace{grid-template-columns:235px minmax(0,1fr)}}
+@media(max-width:900px){.toolbar{flex-wrap:wrap}.search{min-width:200px}.hero .hero-copy,.hero .collection-crest{width:48%}}
+@media(max-width:650px){
+ #brand-title{font-size:16px;max-width:220px}
+ .header-tools{gap:6px}.header-tools button{font-size:14px;padding:9px 10px}
+ .header-tools .language-switch button{font-size:14px;padding:6px}
+ .hero .hero-copy,.hero .collection-crest{width:100%}
+ .hero h1{font-size:clamp(34px,8.5vw,42px);line-height:1.22}
+ .hero-copy>p{font-size:16px}
+ .hero .total h2,.hero .total #percent{font-size:32px}
+ .hero .total .eyebrow{font-size:14px}
+ .view-tabs button{font-size:14px;padding:11px 6px;overflow-wrap:normal}
+ .factions{width:100%;flex-basis:100%}.factions button{font-size:16px}
+ .toolbar select{max-width:100%;width:100%;min-height:46px}
+ .toolbar .search{min-width:0}
+ .section-head h2,.feature-heading h2{font-size:27px}
+ .route-title h3{font-size:18px}
+ .route summary{gap:9px}
+ .route-num{min-width:32px;font-size:14px}
+ .route-progress{width:54px;font-size:13px}
+ .pet{flex-wrap:wrap}
+ .pet>span:not(.pet-avatar):not(.pet-point){flex:1;min-width:120px}
+ .pet-point{max-width:none}
+ .spawn-list button{font-size:15px}.spawn-list button small{font-size:12px}
+ #farm-dialog .dialog-head strong{font-size:16px}
+ .feature-filters label,.feature-filters select,.feature-filters #world-reset{font-size:15px}
+}
+@media(orientation:landscape) and (max-height:500px){
+ header{height:auto;min-height:64px}
+ .hero .hero-copy,.hero .collection-crest{width:48%}
+ .hero h1{font-size:36px}.hero-copy>p{font-size:16px}
+ .hero .total h2,.hero .total #percent{font-size:30px}
+}
