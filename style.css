@@ -72,3 +72,14 @@ body{background:radial-gradient(ellipse at 60% 0%,#42131755,transparent 50%),#08
 }
 
 footer .art-credit{margin-top:18px;color:#d9a2ae;font-size:12px;letter-spacing:.6px}
+
+/* Official AION 2 panorama, integrated with the collection progress. */
+.hero .collection-crest{width:100%;max-width:1280px;margin-top:20px;isolation:isolate}
+.hero .official-art{position:relative;width:100%;max-width:none;height:clamp(250px,32vw,430px);border-radius:12px 12px 0 0;mask-image:none;background:#140b10;overflow:hidden}
+.hero .official-art img{display:block;width:100%;height:100%;object-fit:cover;object-position:56% 36%;filter:grayscale(.8) sepia(.25) saturate(.75) brightness(.82)}
+.hero .official-art:after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,#160b10 0%,transparent 35%),linear-gradient(90deg,#29081288,transparent 45%,#3a091855);box-shadow:inset 0 0 70px #0b030980;pointer-events:none}
+.hero .collection-crest .total{width:100%;margin-top:0;border:1px solid #58212e;border-top:0;border-radius:0 0 12px 12px;padding:18px 26px 22px;background:linear-gradient(100deg,#160b10,#250d16 50%,#160b10);box-shadow:none}
+.hero .collection-crest .total:before{left:0;top:0;width:100%;height:1px;background:linear-gradient(90deg,transparent,#a32d43,transparent)}
+footer .official-art-credit{font-size:11px;color:#9b8189;margin-top:8px}
+@media(max-width:650px){.hero{padding-left:0;padding-right:0}.hero .collection-crest{margin-top:18px}.hero .official-art{height:240px}.hero .official-art img{object-position:58% 35%}.hero .collection-crest .total{padding:16px 18px 20px}}
+@media(orientation:landscape) and (max-height:500px){.hero .collection-crest{width:100%;max-width:800px}.hero .official-art{height:200px}}
