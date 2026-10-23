@@ -15,7 +15,7 @@ Object.assign(EN,{'Отметить всех':'Mark all','Снять отмет�
  function goRoute(id){const r=ROUTES.find(r=>r.id===id);if(!r)return;category=query=region='';el('search').value='';el('region').value='';el('unfinished').checked=false;opened.add(id);setView('routes');window.rememberRoute(id);render();requestAnimationFrame(()=>document.querySelector(`[data-route="${id}"]`)?.scrollIntoView({behavior:'smooth',block:'start'}));}
  function setPet(key,checked){state[state.faction]=checked?[...new Set([...state[state.faction],key])]:state[state.faction].filter(k=>k!==key);save();render();}
  function sourceKind(p){return p.routes.some(x=>!x.r.extra)?'routes':p.routes[0].r.kind;}
- const kinds=['routes','Сундуки и магазины','Боссы и подземелья','Источник уточняется'];
+ const kinds=['routes','Сундуки и магазины','Боссы и подземелья'];
  const kindLabel=k=>k==='routes'?tr('Маршруты','Routes'):tx(k);
  function petCheck(p,scope){return `<label class="catalog-check"><input type="checkbox" data-feature-pet="${esc(p.key)}" ${done(p)?'checked':''} aria-label="${esc(tr('Отметить: ','Mark: ')+gn(p.name,'pet'))}">${petImage(p)}<strong>${esc(gn(p.name,'pet'))}</strong></label>`;}
  function links(p){return p.routes.map(({r})=>`<button data-go-route="${r.id}">${esc(routeTitle(r))} ↗</button>`).join('');}
