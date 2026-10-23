@@ -74,7 +74,7 @@ body{background:radial-gradient(ellipse at 60% 0%,#42131755,transparent 50%),#08
 footer .art-credit{margin-top:18px;color:#d9a2ae;font-size:12px;letter-spacing:.6px}
 
 /* Full-width ruins panorama with collection over the right-hand ruins. */
-.hero{display:flex;flex-direction:column;justify-content:center;align-items:flex-end;gap:24px;min-height:580px;padding:65px 7%;text-align:left;background:#151516 url('brand/ruins-hero.png') center 52%/cover no-repeat}
+.hero{display:flex;flex-direction:column;justify-content:center;align-items:flex-end;gap:24px;min-height:580px;padding:65px 7%;text-align:left;background:#151516 url('brand/ruins-hero-v2.webp') center 52%/cover no-repeat}
 .hero:before{content:'';position:absolute;inset:0;background:linear-gradient(90deg,transparent 30%,#08090b40 55%,#08090b8c 100%),linear-gradient(0deg,#0808088c,transparent 25%);z-index:0;pointer-events:none}
 .hero .hero-copy,.hero .collection-crest{position:relative;z-index:1;width:40%;max-width:500px;min-width:0;margin:0}
 .hero h1{font-size:clamp(36px,4.5vw,60px);line-height:1.08;margin:12px 0;text-shadow:0 2px 18px #0009}
